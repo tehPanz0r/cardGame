@@ -1,0 +1,54 @@
+<script>
+	var Deck = function () {
+		this.cards = [];
+		this.count = function() {
+			return this.cards.length;
+		}
+		this.init = function() {
+			for (s = 1; s <= 4; s++) {
+				for (r = 1; r <= 13; r++) {
+					this.cards.push(new Card(r, s))
+				}
+			}
+		}
+	}
+
+	var Card = function (rank, suit) {
+		this.rank = rank
+		this.suit = suit;
+		this.show = function() {
+			console.log(this.rank + " of " + this.suit)
+		}
+	}
+
+	function Shuffler (array) {
+		var currentIndex = array.length;
+		var temporaryValue, randomIndex;
+		// While there remain elements to shuffle...
+		while(0 !== currentIndex) {
+			//Pick a remaining element...
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+			// And swap it with the current element;
+			temporaryValue = array[currentIndex];
+			array[currentIndex] = array[randomIndex];
+			array[randomIndex] = temporaryValue;
+		}
+		return array;
+	}
+
+	function Dealer () {
+
+	}
+
+	function Player (name, hand) {
+		this.name = name
+		this.hand = []
+	}
+
+	d = new Deck ();
+	d.init ();
+	Shuffler(d.cards);
+
+
+</script>
