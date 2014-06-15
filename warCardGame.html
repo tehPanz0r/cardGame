@@ -43,13 +43,14 @@
 		this.hand = hand
 	}
 
-	d = new Deck ();
-	d.init ();
-	Shuffler(d.cards);
+  function gameStart () {
+    d = new Deck ();
+    d.init ();
+    Shuffler(d.cards);
 
-	player1 = new Player (prompt("Welcome, what would you like to be called?!"), d.cards[Math.floor(Math.random()* 52)])
-	player2 = new Player (prompt("Welcome, what would you like to be called, number two perhaps?"), d.cards[Math.floor(Math.random()* 52)])
+    player1 = new Player (prompt("Welcome, what would you like to be called?!"), d.cards[Math.floor(Math.random()* 52)])
+    player2 = new Player (prompt("Welcome, what would you like to be called, number two perhaps?"), d.cards[Math.floor(Math.random()* 52)])
+  }
 
-
-
+  gameStart();
 </script>
