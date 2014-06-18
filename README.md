@@ -10,5 +10,5 @@ Card game currently consists of 5 classes
  -Player - Player constructor function.  
  -gameStart - Begins game, generates players(name, random card), compares player.hand rank valvues, and announces winner.  
  
-  - Diagram -
+ Diagram -
  https://www.dropbox.com/s/kn1gq0qol1kxqrl/warCardGame.png
