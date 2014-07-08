@@ -21,6 +21,7 @@
 			console.log(this.rank + " of " + this.suit);
 		}
 	};
+
   //Shuffler function based on Fisher-Yates shuffler
 	function Shuffler (array) {
 		var currentIndex = array.length;
@@ -39,30 +40,46 @@
 	};
 
 
-	function Player (name, hand) {
+	function Player (name) {
 		this.name = name
-		this.hand = hand
+		this.hand = []
+		this.score = 0
+    this.playCard = this.hand.pop()
 	};
 
-  function gamePlay () {
-    
-  };
+  	function Dealer () {
+  		i = d.cards.length
+  		while (i > 0) {
+  			popped = d.cards.pop()
+  			player1.hand.push(popped)
+  			i--
+  			popped = d.cards.pop()
+  			player2.hand.push(popped)
+  			i--
+  		}
+  	};
+
 
   function gameStart () {
     d = new Deck ();
     d.init ();
     Shuffler(d.cards);
     //invoke Player constructor function.
-    player1 = new Player (prompt("Welcome, what would you like to be called?!"), d.cards[Math.floor(Math.random()* 52)]);
-    player2 = new Player (prompt("Welcome, what would you like to be called, number two perhaps?"), d.cards[Math.floor(Math.random()* 52)]);
+    player1 = new Player (prompt("Welcome, what would you like to be called?!"));
+    player2 = new Player (prompt("Welcome, what would you like to be called, number two perhaps?"));
+    deal = new Dealer ();
+    player1.playCard = player1.hand.pop()
+    player2.playCard = player2.hand.pop()
     //Log Player card value
-    console.log(player1.hand);
-    console.log(player2.hand);
+   console.log(player1.hand);
+   console.log(player2.hand);
     //Compare Player card value
-    if(player1.hand.rank > player2.hand.rank) {
-      console.log(player1.name + " wins!");
+    if(player1.playCard.rank > player2.playCard.rank) {
+      player1.score ++
+      console.log(player1.name + " wins! With a " +player1.playCard.rank);
     } else {
-      console.log(player2.name + " wins!");
+      player2.score ++
+      console.log(player2.name + " wins! With a " +player2.playCard.rank);
     }
   };
 
